@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
 
     private float speedWhileCrouching;
     private float defaultSize;
-    public bool canCrouch = true;
+    private bool canCrouch = true;
     bool crouchingInput;
     bool crouchingInputUp;
 
