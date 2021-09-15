@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
 
     private float speedWhileCrouching;
     private float defaultSize;
+    public bool canCrouch = true;
     bool crouchingInput;
     bool crouchingInputUp;
 
@@ -133,10 +134,18 @@ public class Movement : MonoBehaviour
             yield return new WaitForSeconds(0.000000000000000000000000001f);
             transform.Translate(0, 0.1f + jumpForce, 0);
         }
-        yield return new WaitForSeconds(0.19f);
+        yield return new WaitForSeconds(0.13f);
         canJump = true;
     }
 
+    IEnumerator crouch()
+    {
+        yield return new WaitForSeconds(0.00000001f);
+        crouching = false;
+        yield return new WaitForSeconds(0.15f);
+        crouching = true;
+        StopCoroutine(crouch());
+    }
     /// <summary>
     /// Other mechanics of the movement!!
     /// Crouching
@@ -148,11 +157,14 @@ public class Movement : MonoBehaviour
             if (crouchingInput)
             {
                 transform.localScale = new Vector3(transform.localScale.x, reducedSize, transform.localScale.z);
+                speed = speedWhileCrouching;
             }
             if (!crouchingInput)
             {
                 StopCrouching();
+                StartCoroutine(crouch());
                 normalPositionAfterCrouching();
+                speed = defaultSpeed;
             }
         }
     }
@@ -164,7 +176,7 @@ public class Movement : MonoBehaviour
     {
         if (crouchingInputUp || crouchingInput && transform.localScale.y > 0.51)
         {
-            transform.Translate(Vector3.up * 2);
+            transform.Translate(Vector3.up * 2.5f);
         }
     }
     //sprinting 
@@ -197,4 +209,3 @@ public class Movement : MonoBehaviour
         transform.Translate(Vector3.forward * z * Time.fixedDeltaTime * speed);
     }
 }
-//End of the movement
