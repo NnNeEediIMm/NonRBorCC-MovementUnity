@@ -10,7 +10,12 @@ public class Movement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 10f;
-
+    
+    //Input
+    [Header("Input")]
+    public KeyCode crouchI = KeyCode.LeftShift;
+    public KeyCode sprintI = KeyCode.LeftControl;
+    
     float x, z;
 
     //gravity
@@ -108,11 +113,11 @@ public class Movement : MonoBehaviour
 
         jumping = Input.GetKeyDown(KeyCode.Space);
 
-        crouchingInput = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W);
-        crouchingInputUp = Input.GetKeyUp(KeyCode.LeftShift);
+        crouchingInput = Input.GetKey(crouchI) && Input.GetKey(KeyCode.W);
+        crouchingInputUp = Input.GetKeyUp(crouchI);
 
-        sprint = Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.W);
-        sprintUp = Input.GetKeyUp(KeyCode.LeftControl);
+        sprint = Input.GetKey(sprintI) && Input.GetKey(KeyCode.W);
+        sprintUp = Input.GetKeyUp(sprintI);
     }
     //jumping
     public void jump()
