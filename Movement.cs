@@ -111,7 +111,7 @@ public class Movement : MonoBehaviour
         crouchingInput = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W);
         crouchingInputUp = Input.GetKeyUp(KeyCode.LeftShift);
 
-        sprint = Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.W);
+        sprint = Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.W);
         sprintUp = Input.GetKeyUp(KeyCode.LeftControl);
     }
     //jumping
