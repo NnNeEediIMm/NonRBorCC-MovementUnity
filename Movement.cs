@@ -10,12 +10,12 @@ public class Movement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 10f;
-    
+
     //Input
     [Header("Input")]
     public KeyCode crouchI = KeyCode.LeftShift;
     public KeyCode sprintI = KeyCode.LeftControl;
-    
+
     float x, z;
 
     //gravity
@@ -207,7 +207,7 @@ public class Movement : MonoBehaviour
     /// Movement 
     /// for all script!
     /// </summary>
-    public void movement() 
+    public void movement()
     {
         transform.Translate(Vector3.right * x * Time.fixedDeltaTime * speed);
         transform.Translate(Vector3.forward * z * Time.fixedDeltaTime * speed);
